@@ -4,7 +4,10 @@ export class ParseError extends Error {
     this.name = "ParseError";
   }
 }
-
-// BEGIN
-
-// END
+export const parseJson = (jsonString) => {
+  try {
+    return JSON.parse(jsonString); // Пытаемся распарсить JSON
+  } catch (error) {
+    throw new ParseError('Invalid JSON string'); // Выбрасываем ParseError при ошибке
+  }
+};
